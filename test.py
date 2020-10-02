@@ -9,5 +9,6 @@ def handler(ctx, data: io.BytesIO = None):
         namespace= eventData["namespace"]
         bucketName= eventData["bucketName"]
         if publicAccessType!='NoPublicAccess' :
+            UpdateBucketDetails = oci.object_storage.models.UpdateBucketDetails(public_access_type= 'NoPublicAccess')
             response= storageClient.update_bucket(namespace, bucketName, UpdateBucketDetails)
             print(response)
